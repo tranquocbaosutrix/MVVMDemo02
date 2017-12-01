@@ -31,6 +31,8 @@ final class FriendDataProvider {
                 do {
                     let friendList = try JSONDecoder().decode([Friend].self, from: moyaResponse.data)
                     completion(.success(friendList))
+                    // Test case: No data available
+                    //completion(.success([Friend]()))
                 } catch let error {
                     completion(.failure(error))
                 }
