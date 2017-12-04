@@ -16,6 +16,8 @@
 		60736C8C1FD1187900CE0BFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60736C8A1FD1187900CE0BFA /* LaunchScreen.storyboard */; };
 		60736C971FD1187900CE0BFA /* MVVMDemo02Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60736C961FD1187900CE0BFA /* MVVMDemo02Tests.swift */; };
 		60736CA21FD1187A00CE0BFA /* MVVMDemo02UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60736CA11FD1187A00CE0BFA /* MVVMDemo02UITests.swift */; };
+		609CDB111FD4FFBC00CCD5D6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CDB101FD4FFBC00CCD5D6 /* Result.swift */; };
+		609CDB131FD500B700CCD5D6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CDB121FD500B700CCD5D6 /* Alert.swift */; };
 		60B28E691FD165DD002BE3E8 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B28E681FD165DD002BE3E8 /* FriendViewController.swift */; };
 		60F756901FD12DF100179804 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F7568F1FD12DF100179804 /* Constant.swift */; };
 		60F756921FD12EA300179804 /* FriendProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F756911FD12EA300179804 /* FriendProvider.swift */; };
@@ -65,6 +67,8 @@
 		60736C9D1FD1187900CE0BFA /* MVVMDemo02UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVVMDemo02UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60736CA11FD1187A00CE0BFA /* MVVMDemo02UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMDemo02UITests.swift; sourceTree = "<group>"; };
 		60736CA31FD1187A00CE0BFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		609CDB101FD4FFBC00CCD5D6 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		609CDB121FD500B700CCD5D6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		60B28E681FD165DD002BE3E8 /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		60F7568F1FD12DF100179804 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		60F756911FD12EA300179804 /* FriendProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProvider.swift; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				60F756A31FD138F700179804 /* Bindable.swift */,
+				609CDB101FD4FFBC00CCD5D6 /* Result.swift */,
+				609CDB121FD500B700CCD5D6 /* Alert.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -602,6 +608,7 @@
 				60F756A21FD1373700179804 /* UpdateFriendViewModel.swift in Sources */,
 				60F756961FD12FB700179804 /* String.swift in Sources */,
 				605A732A1FD12CAF001DF1E5 /* Friend.swift in Sources */,
+				609CDB111FD4FFBC00CCD5D6 /* Result.swift in Sources */,
 				60F756981FD130D700179804 /* FriendDataProvider.swift in Sources */,
 				60F756A71FD1423500179804 /* FriendTableViewCell.swift in Sources */,
 				60F756A91FD1455F00179804 /* FriendListViewController.swift in Sources */,
@@ -609,6 +616,7 @@
 				60B28E691FD165DD002BE3E8 /* FriendViewController.swift in Sources */,
 				60F7569E1FD136FE00179804 /* AddFriendViewModel.swift in Sources */,
 				60736C821FD1187900CE0BFA /* AppDelegate.swift in Sources */,
+				609CDB131FD500B700CCD5D6 /* Alert.swift in Sources */,
 				60F756901FD12DF100179804 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

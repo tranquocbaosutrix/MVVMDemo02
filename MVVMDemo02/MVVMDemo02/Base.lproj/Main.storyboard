@@ -108,7 +108,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="S2Y-cF-PuB"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7eU-uN-b2e">
                             <connections>
-                                <segue destination="oAp-VJ-Gs7" kind="show" id="IAf-v7-ogH"/>
+                                <segue destination="oAp-VJ-Gs7" kind="show" identifier="friendsToAddFriend" id="IAf-v7-ogH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -279,14 +279,27 @@
                                     <constraint firstItem="7MJ-M4-Aa6" firstAttribute="leading" secondItem="rLi-DC-Ni8" secondAttribute="leading" id="kME-mq-Pxi"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nr9-Df-H3x">
+                                <rect key="frame" x="159.5" y="200" width="56" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="qSB-xn-oR4"/>
+                                </constraints>
+                                <state key="normal" title="SUBMIT"/>
+                                <connections>
+                                    <action selector="submitButtonTapp:" destination="oAp-VJ-Gs7" eventType="touchUpInside" id="gqM-bW-pzG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="rLi-DC-Ni8" firstAttribute="trailing" secondItem="jis-uf-Adt" secondAttribute="trailing" id="3er-IU-ke3"/>
                             <constraint firstItem="rLi-DC-Ni8" firstAttribute="top" secondItem="rNg-MT-5hM" secondAttribute="bottom" id="B44-tp-Fom"/>
                             <constraint firstItem="rNg-MT-5hM" firstAttribute="height" secondItem="L3v-Q9-aCb" secondAttribute="height" id="Cse-pe-6Y1"/>
                             <constraint firstItem="L3v-Q9-aCb" firstAttribute="top" secondItem="jis-uf-Adt" secondAttribute="top" constant="8" id="GtC-z9-3Yx"/>
                             <constraint firstItem="L3v-Q9-aCb" firstAttribute="leading" secondItem="jis-uf-Adt" secondAttribute="leading" id="NWc-eD-SwP"/>
+                            <constraint firstItem="nr9-Df-H3x" firstAttribute="centerX" secondItem="0Cr-Qq-YrK" secondAttribute="centerX" id="Ymu-uS-2fO"/>
+                            <constraint firstItem="nr9-Df-H3x" firstAttribute="top" secondItem="rLi-DC-Ni8" secondAttribute="bottom" constant="8" id="fra-vl-RcD"/>
                             <constraint firstItem="rNg-MT-5hM" firstAttribute="leading" secondItem="jis-uf-Adt" secondAttribute="leading" id="hOk-rQ-Fm9"/>
                             <constraint firstItem="L3v-Q9-aCb" firstAttribute="trailing" secondItem="jis-uf-Adt" secondAttribute="trailing" id="lmz-fO-ETs"/>
                             <constraint firstItem="rNg-MT-5hM" firstAttribute="trailing" secondItem="jis-uf-Adt" secondAttribute="trailing" id="srh-QV-iZ7"/>
@@ -295,12 +308,27 @@
                             <constraint firstItem="rLi-DC-Ni8" firstAttribute="leading" secondItem="jis-uf-Adt" secondAttribute="leading" id="wyw-en-HUY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jis-uf-Adt"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="HRr-8S-Fob" appends="YES" id="1n6-nb-el5"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Add new friend" id="fgU-KJ-Ty6"/>
+                    <connections>
+                        <outlet property="buttonSubmit" destination="nr9-Df-H3x" id="OwM-2M-eFJ"/>
+                        <outlet property="textFieldFirstname" destination="Na5-iA-Sdv" id="9fF-5u-rFu"/>
+                        <outlet property="textFieldLastname" destination="2q8-s6-bba" id="c0u-60-Hqa"/>
+                        <outlet property="textFieldPhonenumber" destination="fka-nV-Etz" id="xz7-in-ekw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9N7-gE-bn2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="HRr-8S-Fob">
+                    <connections>
+                        <action selector="rootViewTapped:" destination="oAp-VJ-Gs7" id="VGh-C8-QYt"/>
+                        <outlet property="delegate" destination="oAp-VJ-Gs7" id="NAH-5Z-m7D"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1376.8" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1446" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dRE-MZ-HZZ">

@@ -9,6 +9,7 @@ import Moya
 
 public enum FriendProvider {
     case getFriendList()
+    case postNewFriend([String: Any])
 }
 
 extension FriendProvider: TargetType {
@@ -20,6 +21,8 @@ extension FriendProvider: TargetType {
         switch self {
         case .getFriendList:
             return "/listFriends"
+        case .postNewFriend:
+            return "/addFriend"
         }
     }
     
@@ -27,6 +30,8 @@ extension FriendProvider: TargetType {
         switch self {
         case .getFriendList:
             return .get
+        case .postNewFriend:
+            return .post
         }
     }
     
@@ -34,6 +39,8 @@ extension FriendProvider: TargetType {
         switch self {
         case .getFriendList:
             return "{{\"firstname\": \"Sylvester\", \"id\": \"22\"}}".utf8Encoded
+        case .postNewFriend:
+            return "".utf8Encoded
         }
     }
     
@@ -41,6 +48,8 @@ extension FriendProvider: TargetType {
         switch self {
         case .getFriendList:
             return .requestPlain
+        case .postNewFriend(let body):
+            return .requestParameters(parameters: body, encoding: JSONEncoding.default)
         }
     }
     

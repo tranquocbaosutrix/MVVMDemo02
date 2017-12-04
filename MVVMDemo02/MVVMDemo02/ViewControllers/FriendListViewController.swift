@@ -65,3 +65,16 @@ extension FriendListViewController: UITableViewDataSource {
         }
     }
 }
+
+extension FriendListViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "friendsToAddFriend" {
+            if let destinationViewController = segue.destination as? FriendViewController {
+                destinationViewController.viewModel = AddFriendViewModel()
+                destinationViewController.updateFriends = { [weak self] in
+                    self?.viewModel.getFriends()
+                }
+            }
+        }
+    }
+}
