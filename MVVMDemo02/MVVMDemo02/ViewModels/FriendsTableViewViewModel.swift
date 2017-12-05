@@ -16,6 +16,8 @@ class FriendsTableViewViewModel {
         case empty
     }
     
+    var onShowError: ((_ alert: SingleButtonAlert) -> Void)?
+    
     var showLoadingHud: Bindable = Bindable(false)
     let friendCells = Bindable([FriendsTableViewCellType]())
     
@@ -37,9 +39,26 @@ class FriendsTableViewViewModel {
         }
     }
     func deleteFriend(at index: Int) {
-//        switch friendCells.value[index] {
-//        case .normal(let viewModel):
-//            let provider = Moya
-//        }
+        switch friendCells.value[index] {
+        case .normal(let viewModel):
+            FriendDataProvider.shared.deleteFriend(id: viewModel.friendItem.id, completion: { [weak self] result in
+                switch result {
+                case .success(let response):
+                    if response != false {
+                        self?.getFriends()
+                    }
+                case .failure(let error):
+                    let okAlert = SingleButtonAlert(
+                        title: error.localizedDescription,
+                        message: "Could not remove \(viewModel.fullName)",
+                        action: AlertAction(buttonTitle: "OK", handler: {
+                            print("OK pressed!")
+                        }))
+                    self?.onShowError?(okAlert)
+                }
+            })
+        default:
+            break
+        }
     }
 }

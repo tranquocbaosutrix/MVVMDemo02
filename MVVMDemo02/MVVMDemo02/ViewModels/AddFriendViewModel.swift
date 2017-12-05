@@ -73,7 +73,7 @@ final class AddFriendViewModel: FriendViewModel {
             switch result {
             case .success:
                 self?.navigateBack?()
-            case let .failure(error):
+            case .failure(let error):
                 let okAlert = SingleButtonAlert(
                     title: error.localizedDescription,
                     message: "Could not add firstname: \(firstname), lastname: \(lastname)",

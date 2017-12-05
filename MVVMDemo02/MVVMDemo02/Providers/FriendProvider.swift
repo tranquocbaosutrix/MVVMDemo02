@@ -54,7 +54,7 @@ extension FriendProvider: TargetType {
         case .updateFriend:
             return "{\"firstname\": \"Sutrix\", \"lastname\": \"Solutions\"}".utf8Encoded
         case .deleteFriend:
-            return "".utf8Encoded
+            return "{}".utf8Encoded
         }
     }
     

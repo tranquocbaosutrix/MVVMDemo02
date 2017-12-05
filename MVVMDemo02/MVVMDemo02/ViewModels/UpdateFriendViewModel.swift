@@ -61,9 +61,11 @@ final class UpdateFriendViewModel: FriendViewModel {
         showLoadingHud.value = true
         FriendDataProvider.shared.updateFriend(id: friend.id, firstname: firstname, lastname: lastname, phonenumber: phonenumber) { [weak self] result in
             switch result {
-            case .success:
-                self?.navigateBack?()
-            case let .failure(error):
+            case .success(let response):
+                if response != false {
+                    self?.navigateBack?()
+                }
+            case .failure(let error):
                 let okAlert = SingleButtonAlert(
                     title: error.localizedDescription,
                     message: "Failed to update information",

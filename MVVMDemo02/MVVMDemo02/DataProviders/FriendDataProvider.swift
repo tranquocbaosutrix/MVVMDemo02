@@ -62,7 +62,7 @@ final class FriendDataProvider {
             switch result {
             case .success:
                 completion(.success(true))
-            case let .failure(error):
+            case .failure(let error):
                 completion(.failure(error))
             }
         }
@@ -77,16 +77,32 @@ final class FriendDataProvider {
         provider.request(.updateFriend(id, param)) { result in
             switch result {
             case .success(let moyaResponse):
-                if let data = String(data: moyaResponse.data, encoding: .utf8) {
-                    print(data)
+                do {
+                    let friendInfoUpdated = try JSONDecoder().decode(Friend.self, from: moyaResponse.data)
+                    if friendInfoUpdated.lastname != "" {
+                        completion(.success(true))
+                    }
+                } catch let error {
+                    completion(.failure(error))
                 }
-                completion(.success(true))
-            case let .failure(error):
+                completion(.success(false))
+            case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
     func deleteFriend(id: Int, completion: @escaping DeleteFriendCompletion) {
-        
+        let provider = MoyaProvider<FriendProvider>()
+        provider.request(.deleteFriend(id)) { result in
+            switch result {
+            case .success(let moyaResponse):
+                if let data = String(data: moyaResponse.data, encoding: .utf8) {
+                    print(data)
+                }
+                completion(.success(true))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }
