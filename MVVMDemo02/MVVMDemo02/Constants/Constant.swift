@@ -8,6 +8,13 @@
 import Foundation
 
 struct LocalAPIConstants {
+    // MARK: Header Params
+    struct HeaderParams {
+        // Content-Type
+        static let ContentType: String = "Content-Type"
+        // application/json
+        static let ContentTypeValue: String = "application/json"
+    }
     // MARK: FriendService BaseURL
-    static let BaseURL: String = "http://friendservice.herokuapp.com"
+    static let BaseURL: String = "https://friendservice.herokuapp.com"
 }

@@ -87,6 +87,7 @@
                                         <connections>
                                             <outlet property="labelFullName" destination="CgY-DO-d0x" id="FcR-bv-DRj"/>
                                             <outlet property="labelPhoneNumber" destination="x0P-qU-5Bh" id="Oyf-9Z-9Q5"/>
+                                            <segue destination="oAp-VJ-Gs7" kind="show" identifier="friendsToUpdateFriend" id="cWR-9H-I70"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -349,4 +350,7 @@
             <point key="canvasLocation" x="-102" y="134"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cWR-9H-I70"/>
+    </inferredMetricsTieBreakers>
 </document>

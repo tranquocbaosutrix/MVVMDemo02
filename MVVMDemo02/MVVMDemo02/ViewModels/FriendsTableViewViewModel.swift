@@ -36,5 +36,10 @@ class FriendsTableViewViewModel {
             }
         }
     }
-    
+    func deleteFriend(at index: Int) {
+//        switch friendCells.value[index] {
+//        case .normal(let viewModel):
+//            let provider = Moya
+//        }
+    }
 }

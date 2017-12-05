@@ -5,7 +5,6 @@
 //  Created by Tran Quoc Bao on 12/1/17.
 //  Copyright © 2017 Tran Quoc Bao. All rights reserved.
 //
-
 import UIKit
 import PKHUD
 
@@ -64,6 +63,14 @@ extension FriendListViewController: UITableViewDataSource {
             return cell
         }
     }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Wanna delete")
+        }
+    }
 }
 
 extension FriendListViewController {
@@ -73,6 +80,21 @@ extension FriendListViewController {
                 destinationViewController.viewModel = AddFriendViewModel()
                 destinationViewController.updateFriends = { [weak self] in
                     self?.viewModel.getFriends()
+                }
+            }
+        }
+        if segue.identifier == "friendsToUpdateFriend" {
+            if let destinationViewController = segue.destination as? FriendViewController {
+                if let indexPath = tableViewFriendList.indexPathForSelectedRow {
+                    switch viewModel.friendCells.value[indexPath.row] {
+                    case .normal(let viewModel):
+                        destinationViewController.viewModel = UpdateFriendViewModel(friend: viewModel.friendItem)
+                        destinationViewController.updateFriends = { [weak self] in
+                            self?.viewModel.getFriends()
+                        }
+                    case .empty, .error:
+                        break
+                    }
                 }
             }
         }

@@ -24,7 +24,13 @@ final class FriendDataProvider {
     // MARK: PostNewFriend
     typealias PostNewFriendResult = Result<Bool>
     typealias PostNewFriendCompletion = (_ result: PostNewFriendResult) -> Void
-
+    // MARK: UpdateFriend
+    typealias UpdateFriendResult = Result<Bool>
+    typealias UpdateFriendCompletion = (_ result: UpdateFriendResult) -> Void
+    // MARK: DeleteFriend
+    typealias DeleteFriendResult = Result<Bool>
+    typealias DeleteFriendCompletion = (_ result: DeleteFriendResult) -> Void
+    
     // MARK: Methods
     func getFriendList(completion: @escaping GetFriendsCompletion) {
         let provider = MoyaProvider<FriendProvider>()
@@ -60,5 +66,27 @@ final class FriendDataProvider {
                 completion(.failure(error))
             }
         }
+    }
+    func updateFriend(id: Int, firstname: String, lastname: String, phonenumber: String, completion: @escaping UpdateFriendCompletion) {
+        let param = [
+            "firstname": firstname,
+            "lastname": lastname,
+            "phonenumber": phonenumber
+        ]
+        let provider = MoyaProvider<FriendProvider>()
+        provider.request(.updateFriend(id, param)) { result in
+            switch result {
+            case .success(let moyaResponse):
+                if let data = String(data: moyaResponse.data, encoding: .utf8) {
+                    print(data)
+                }
+                completion(.success(true))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+    func deleteFriend(id: Int, completion: @escaping DeleteFriendCompletion) {
+        
     }
 }

@@ -10,6 +10,8 @@ import Moya
 public enum FriendProvider {
     case getFriendList()
     case postNewFriend([String: Any])
+    case updateFriend(Int, [String: Any])
+    case deleteFriend(Int)
 }
 
 extension FriendProvider: TargetType {
@@ -23,6 +25,10 @@ extension FriendProvider: TargetType {
             return "/listFriends"
         case .postNewFriend:
             return "/addFriend"
+        case .updateFriend(let id, _):
+            return "/editFriend/\(id)"
+        case .deleteFriend(let id):
+            return "/editFriend/\(id)"
         }
     }
     
@@ -32,6 +38,10 @@ extension FriendProvider: TargetType {
             return .get
         case .postNewFriend:
             return .post
+        case .updateFriend:
+            return .patch
+        case .deleteFriend:
+            return .delete
         }
     }
     
@@ -40,6 +50,10 @@ extension FriendProvider: TargetType {
         case .getFriendList:
             return "{{\"firstname\": \"Sylvester\", \"id\": \"22\"}}".utf8Encoded
         case .postNewFriend:
+            return "{\"firstname\": \"Sutrix\", \"lastname\": \"Solutions\"}".utf8Encoded
+        case .updateFriend:
+            return "{\"firstname\": \"Sutrix\", \"lastname\": \"Solutions\"}".utf8Encoded
+        case .deleteFriend:
             return "".utf8Encoded
         }
     }
@@ -50,10 +64,14 @@ extension FriendProvider: TargetType {
             return .requestPlain
         case .postNewFriend(let body):
             return .requestParameters(parameters: body, encoding: JSONEncoding.default)
+        case .updateFriend(_, let body):
+            return .requestParameters(parameters: body, encoding: JSONEncoding.default)
+        case .deleteFriend:
+            return .requestPlain
         }
     }
     
     public var headers: [String : String]? {
-        return nil
+        return [LocalAPIConstants.HeaderParams.ContentType: LocalAPIConstants.HeaderParams.ContentTypeValue]
     }
 }
